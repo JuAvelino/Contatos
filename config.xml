@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="br.fib.lp5.contatos" version="0.0.1" xmlns="http://www.w3.org/ns/wi" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="br.fib.lp5.PauloProva" version="0.0.1" xmlns="http://www.w3.org/ns/wi" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>Contatos</name>
   <description>
 App de uso para Contatos

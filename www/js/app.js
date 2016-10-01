@@ -1,5 +1,6 @@
 document.getElementById("novoContato").addEventListener("click", criarContato);
 document.getElementById("listaContatos").addEventListener("click", listarContatos);
+document.getElementById("listarDuplicados").addEventListener("click", listarDuplicados);
 
 function criarContato() {
    var name = document.getElementById('name');
@@ -23,7 +24,7 @@ function criarContato() {
 
 function listarContatos() {
    var options = new ContactFindOptions();
-   options.filter = "Amor";
+   options.filter = "";
    options.multiple = true;
 
    fields = ["displayName", "phoneNumbers"];
@@ -41,4 +42,36 @@ function listarContatos() {
       alert('Falha: ' + message);
    }
   
+}
+  function listarDuplicados(){
+   //document.getElementById("principal").style.display = "block";
+  // document.getElementById("novo").style.display = "none";
+   var cont = 0;
+   var options = new ContactFindOptions();
+   options.filter = "";
+   options.multiple = true;
+
+   fields = ["displayName", "phoneNumbers"];
+   navigator.contacts.find(fields, sucesso, falha, options);
+   contatoDiv = document.querySelector("#contato");
+   contatoDiv.innerHTML = "";
+    
+    function sucesso(contacts) {
+      for (var i = 0; i < contacts.length; i++) {
+         cont = 0;
+         for(var j = 0; j < contacts.length ; j++){
+            if(contacts[i].displayName == contacts[j].displayName){
+               cont++;
+            }
+         } 
+         if(cont > 1){
+            contatoDiv.innerHTML += "<b>" + 
+            contacts[i].displayName + "</b> " +
+            contacts[i].phoneNumbers[0].value + "<br/>";
+         } 
+      } 
+  }
+  function falha(message){
+   alert('Falha: ' + message);
+  }
 }
